@@ -1,7 +1,7 @@
 Authentication
 ==============
 
-> How to do Authentication in react-native app
+> A react-native app with Authentication
 
 ## Motivation
 This app was taken from **Build Apps with React Native** course from [Udemy] [https://www.udemy.com/courses/]
