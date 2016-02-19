@@ -16,7 +16,8 @@ export default class Signin extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
   }
   render() {
@@ -38,13 +39,22 @@ export default class Signin extends Component {
             onChangeText={(text) => this.setState({ password: text})}
             value={this.state.password}
             />
-
+          <Text style={styles.label}>{this.state.errorMessage}</Text>
           <Button text={'Sign In'} onPress={this.onPress.bind(this)}/>
         </View>
-    )
+    );
   }
   onPress() {
-    console.log('pressed!');
+    User.logIn(this.state.username, this.state.password)
+      .done(response => {
+        console.log(response.user);
+      })
+      .catch(error => {
+        console.warn(error);
+        this.setState({
+          errorMessage: error.message
+        });
+      });
   }
 }
 

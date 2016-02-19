@@ -1,10 +1,9 @@
 'use strict';
 
 import React,{
-  View,
-  Text,
   StyleSheet,
   Component
+  Navigator,
 } from 'react-native'
 
 import Signin from './components/authentication/signin'
@@ -12,9 +11,12 @@ import Signin from './components/authentication/signin'
 export default class Main extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Signin />
-      </View>
+      <Navigator
+        style={styles.container}
+        initialRoute={}
+        renderScene={}
+        configureScene={() => { return Navigator.SceneConfigs.FloatRight; }}
+      />
     )
   }
 }
@@ -22,7 +24,5 @@ export default class Main extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
   }
 });
