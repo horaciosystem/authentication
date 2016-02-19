@@ -5,8 +5,7 @@ import React,{
   View,
   StyleSheet,
   TextInput,
-  Text,
-  TouchableHighlight
+  Text
 } from 'react-native';
 
 import Button from '../common/button';
@@ -40,21 +39,27 @@ export default class Signin extends Component {
             value={this.state.password}
             />
           <Text style={styles.label}>{this.state.errorMessage}</Text>
-          <Button text={'Sign In'} onPress={this.onPress.bind(this)}/>
+          <Button text={'Sign In'} onPress={this.onPress.bind(this)} />
+          <Button text={'Sign Up'} onPress={this.onSignupPress.bind(this)} />
         </View>
+
     );
   }
   onPress() {
-    User.logIn(this.state.username, this.state.password)
-      .done(response => {
-        console.log(response.user);
-      })
-      .catch(error => {
-        console.warn(error);
-        this.setState({
-          errorMessage: error.message
-        });
-      });
+
+    // User.logIn(this.state.username, this.state.password)
+    //   .done(response => {
+    //     console.log(response.user);
+    //   })
+    //   .catch(error => {
+    //     console.warn(error);
+    //     this.setState({
+    //       errorMessage: error.message
+    //     });
+    //   });
+  }
+  onSignupPress() {
+    this.props.navigator.push({name: 'signup'});
   }
 }
 
@@ -76,5 +81,10 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 18
+  },
+  buttons: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
