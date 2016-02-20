@@ -8,11 +8,12 @@ import React,{
 
 import Signin from './components/authentication/signin';
 import Signup from './components/authentication/signup';
-
+import Messages from './components/messages/messages';
 
 const ROUTES = {
   signin: Signin,
   signup: Signup,
+  messages: Messages,
 };
 
 export default class Main extends Component {
