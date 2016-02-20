@@ -55,10 +55,14 @@ export default class Signup extends Component {
     this.props.navigator.pop();
   }
   onSignUpPress() {
-    if (this.state.password != this.state.passwordConfirmation) {
-      return this.setState({errorMessage: 'Your passwords do not match'});
-    }
+    if (!this.state.username || !this.state.password)
+      return this.setState({errorMessage: 'User name or password are empty!'});
 
+    if (this.state.password != this.state.passwordConfirmation)
+      return this.setState({errorMessage: 'Your passwords do not match'});
+
+
+    this.props.navigator.immediatelyResetRouteStack([{ name: 'messages' }]);
     //Create a new user
     // User.signUp(this.state.username, this.state.password)
     //   .done(response => {

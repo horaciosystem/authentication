@@ -39,14 +39,17 @@ export default class Signin extends Component {
             value={this.state.password}
             />
           <Text style={styles.label}>{this.state.errorMessage}</Text>
-          <Button text={'Sign In'} onPress={this.onPress.bind(this)} />
+          <Button text={'Sign In'} onPress={this.onSignInPress.bind(this)} />
           <Button text={'Sign Up'} onPress={this.onSignupPress.bind(this)} />
         </View>
 
     );
   }
-  onPress() {
+  onSignInPress() {
+    if (!this.state.username || !this.state.password)
+      return this.setState({errorMessage: 'User name or password are empty!'});
 
+    this.props.navigator.immediatelyResetRouteStack([{ name: 'messages' }]);
     // User.logIn(this.state.username, this.state.password)
     //   .done(response => {
     //     console.log(response.user);
